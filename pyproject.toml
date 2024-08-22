@@ -1,0 +1,30 @@
+[build-system]
+requires      = ["setuptools>=61.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "thinking-runtime"
+version = "0.0.1"
+description = "Runtime configuration"
+readme = "README.md"
+authors = [{ name = "Filip Malczak", email = "filip.malczak@gmail.com" }]
+license = { file = "LICENSE" }
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Topic :: Software Development :: Libraries",
+    "Topic :: Software Development :: Libraries :: Application Frameworks",
+    "Typing :: Typed"
+]
+keywords = ["thinking", "runtime"]
+dependencies = [
+]
+requires-python = ">=3.12"
+
+[project.urls]
+Homepage = "https://github.com/FilipMalczak/thinking-runtime"
+
+[tool.setuptools]
+#todo extract fluent_container as a separate project
+packages = ["thinking_runtime", "fluent_container"]
