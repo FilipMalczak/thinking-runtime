@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "thinking-runtime"
-version = "0.0.1"
+version = "0.0.2"
 description = "Runtime configuration"
 readme = "README.md"
 authors = [{ name = "Filip Malczak", email = "filip.malczak@gmail.com" }]
@@ -27,4 +27,4 @@ Homepage = "https://github.com/FilipMalczak/thinking-runtime"
 
 [tool.setuptools]
 #todo extract fluent_container as a separate project
-packages = ["thinking_runtime", "fluent_container"]
+packages = ["thinking_runtime", "thinking_runtime.defaults", "fluent_container"]
