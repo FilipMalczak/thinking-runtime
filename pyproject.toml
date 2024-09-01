@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "thinking-runtime"
-version = "0.0.2"
+version = "0.0.3"
 description = "Runtime configuration"
 readme = "README.md"
 authors = [{ name = "Filip Malczak", email = "filip.malczak@gmail.com" }]
@@ -17,7 +17,7 @@ classifiers = [
     "Topic :: Software Development :: Libraries :: Application Frameworks",
     "Typing :: Typed"
 ]
-keywords = ["thinking", "runtime"]
+keywords = ["thinking", "runtime", "configuration", ]
 dependencies = [
     "thinking-modules>=0.0.4"
 ]

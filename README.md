@@ -74,4 +74,37 @@ if current_runtime().mode == RuntimeMode.TEST:
     logging_config.format = "..."
 ```
 
+### [`fluent_container`](./fluent_container) and logging configuration
 
+This package allows for creation of `list`s on steroids, meant to simplify creation of configuration DSLs. 
+
+It exposes [`Container`](./fluent_container/container.py) base class that can hold 
+['Identifiable's](./fluent_container/traits.py) (anything that exposes `identifier` property).
+It won't allow duplicates (considering only the `identifier`s) and will only accept the type that you specify (raising, 
+when you try to append something that doesn't match). Besides that it is ordered like a `list`.
+
+It can also expose views (["closures"](./fluent_container/closure.py)) that filter out anything that doesn't match
+view criteria (these usually being "of given type").
+
+Both `Container` and `...Closure`s overload `append(...)` so that you can either pass a concrete instance of 
+`Identifiable` or simply constructor arguments.
+
+See [`Handlers`](./thinking_runtime/defaults/logging_config.py) for example usage. Its a container of logging handler
+definition. As the framework supports 3 main types of handlers: `StreamHandler` (routing logs to any stream, usually
+stdout or stderr), `FileHandler` (dumping logs to file or rotating file) or `RawHandler` (wrapper over a raw `logging.Handler`
+and its `identifier`), `Handlers` expose 3 properties: `streams`, `files` and `raw`, being `closures` that match
+those specific types. Thanks to that you can use:
+
+```python
+handlers.streams.append(NamedTextIO("name", some_stream), "DEBUG")
+handlers.files.all #or simply handlers.files, since it supports __iter__ 
+handlers.raw["specific_id"]
+```
+
+instead of
+
+```python
+handlers.append(StreamHandler(NamedTextIO("name", some_stream), "DEBUG"))
+[ x for x in handlers if isinstance(FileHandler) ]
+{ x.identifier: x for x in handlers if isinstance(RawHandler) }["specific_id"]
+```

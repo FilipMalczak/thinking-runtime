@@ -34,8 +34,8 @@ class Enablable(Protocol):
     def disable(self):
         self.enabled = False
 
-def any_enabled(i: Iterable[Enablable]):
+def any_enabled(i: Iterable[Enablable]) -> bool:
     return any(x.enabled for x in i)
 
-def all_enabled(i: Iterable[Enablable]):
+def all_enabled(i: Iterable[Enablable]) -> bool:
     return any(x.enabled for x in i)
