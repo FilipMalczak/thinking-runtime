@@ -11,10 +11,6 @@ class ConfigurationRequirement(NamedTuple):
     def __or__(self, other: str) -> Self:
         return ConfigurationRequirement(self.module_names + [other], self.required)
 
-class ConfigurationItem(NamedTuple):
-    module_name: str
-    configurator: ModuleType
-
 class BootstrapAction(ABC):
     def prepare(self) -> None: pass
 
