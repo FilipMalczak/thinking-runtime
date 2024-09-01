@@ -28,7 +28,7 @@ jobs:
           [ -f ./test-requirements.txt ] && pip install -r ./test-requirements.txt || echo "No test-requirements.txt found"
       - name: Run unittests
         run: |
-          python -m xmlrunner -o ./xmlunit
+          python -m xmlrunner test.cases -o ./xmlunit
 
       # do not add coverage - its useless, since tests need to run subprocesses
 
