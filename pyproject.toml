@@ -19,6 +19,7 @@ classifiers = [
 ]
 keywords = ["thinking", "runtime"]
 dependencies = [
+    "thinking-modules>=0.0.4"
 ]
 requires-python = ">=3.12"
 
@@ -28,3 +29,7 @@ Homepage = "https://github.com/FilipMalczak/thinking-runtime"
 [tool.setuptools]
 #todo extract fluent_container as a separate project
 packages = ["thinking_runtime", "thinking_runtime.defaults", "fluent_container"]
+
+dependencies = [
+    "thinking-modules>=0.0.2"
+]

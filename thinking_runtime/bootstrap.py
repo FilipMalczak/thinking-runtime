@@ -1,7 +1,6 @@
 from importlib import import_module
 
 from thinking_runtime.defaults.configure_logging import ConfigureLogging
-from thinking_runtime.defaults.recognise_main_module import RecogniseMainModule
 from thinking_runtime.defaults.recognise_runtime import RecogniseRuntime
 from thinking_runtime.model import BootstrapAction, ConfigurationItem
 from thinking_runtime.setup import SetupBootstrapping, register_action
@@ -27,7 +26,6 @@ def run(action: BootstrapAction):
 def bootstrap():
     global BOOTSTRAPPED
     if not BOOTSTRAPPED:
-        register_action(RecogniseMainModule)
         register_action(RecogniseRuntime)
         register_action(ConfigureLogging)
         #todo add ConfigureResources action/module

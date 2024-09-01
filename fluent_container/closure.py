@@ -13,6 +13,9 @@ class ElementMatchingClosure[E](UniqueAppendMixin):
     def _matches(self, x: E) -> bool:
         return True
 
+    def __iter__(self) -> Iterable[E]:
+        yield from self.all
+
     @property
     def all[T](self) -> Iterable[T]:
         for x in self._data:
