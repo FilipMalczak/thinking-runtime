@@ -128,6 +128,7 @@ class LogFile(HandlerDefinition, Identifiable):
         return RotatingFileHandler(self.filesystem_coordinates.path, maxBytes=self.rotation.max_bytes, backupCount=self.rotation.backup_count)
 
 
+@dataclass
 class RawHandler(HandlerDefinition, NameAsId):
     name: str
     backend: logging.Handler
