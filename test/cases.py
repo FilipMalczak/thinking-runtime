@@ -12,10 +12,16 @@ class RuntimeTests(TestCase):
     def exec_runtime(self, cmd: str) -> tuple[str, str]:
         """
         Takes whatever you want to add after 'python' (gonna call f"python {cmd}"), gathers stderr and stdout and returns
-        it as tuple.
+        it as tuple. Fail if subprocess fails - will print stderr and stdout in that case.
         """
         command = f"cd {REPO_ROOT}; {sys.executable} {cmd}"
-        result = subprocess.run(command, capture_output=True, shell=True, check=True, text=True)
+        result = subprocess.run(command, capture_output=True, shell=True, text=True)
+        if result.returncode > 0:
+            print("STDOUT")
+            print(result.stdout)
+            print("="*80)
+            print("STDERR")
+            print(result.stdout)
         self.assertEqual(result.returncode, 0)
         return result.stderr, result.stdout
 

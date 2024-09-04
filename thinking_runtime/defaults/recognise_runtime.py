@@ -2,7 +2,6 @@ import os
 from dataclasses import dataclass, field
 from datetime import datetime
 from enum import Enum, auto
-from functools import cache
 from typing import NamedTuple, Callable
 
 from lazy import lazy
@@ -14,7 +13,7 @@ from fluent_container.closure import SearchClosure
 from fluent_container.container import Container
 from fluent_container.traits import name_as_id
 from thinking_runtime.model import BootstrapAction, ConfigurationRequirement
-from thinking_runtime.setup import BOOTSTRAP_CONFIG
+from thinking_runtime.init_config import BOOTSTRAP_CONFIG
 
 
 class PackagesClosure(Immutable):
