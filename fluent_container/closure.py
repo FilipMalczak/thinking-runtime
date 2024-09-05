@@ -59,5 +59,8 @@ class SearchClosure[E: Identifiable, T: Identifiable, ID](ElementMatchingClosure
                 if not skip_missing:
                     raise
 
+    def any_present(self, *ids: ID) -> bool:
+        return any(self.find(*ids))
+
     def __contains__(self, id: ID) -> bool:
         return self.get(id) is not None

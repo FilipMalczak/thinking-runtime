@@ -7,7 +7,7 @@ from thinking_runtime.model import BootstrapAction, ConfigurationRequirement
 
 class ConfigureLogging(BootstrapAction):
     def prepare(self) -> None:
-        if current_runtime().facets.by_name.find(DEBUG, PROFILING):
+        if current_runtime().facets.by_name.any_present(DEBUG, PROFILING):
             logging_config.level = logging.DEBUG
         else:
             logging_config.level = logging.INFO
