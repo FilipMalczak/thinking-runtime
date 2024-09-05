@@ -144,7 +144,8 @@ DEBUG = "DEBUG"
 DEBUG_FACET = facet(
     DEBUG,
     envvar("DEBUG").is_present,
-    envvar("DEBUGGING").is_present
+    envvar("DEBUGGING").is_present,
+    # envvar("PYDEVD_LOAD_VALUES_ASYNC").equals("True") #this indicates PyCharm debugger being online
 )
 PROFILING = "PROFILING"
 PROFILING_FACET = facet(
